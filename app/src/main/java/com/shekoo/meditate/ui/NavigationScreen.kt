@@ -5,9 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.NavigationBarItem
@@ -23,15 +21,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.shekoo.meditate.R
 import com.shekoo.meditate.ui.theme.AquaBlue
 import com.shekoo.meditate.ui.theme.ButtonBlue
 import com.shekoo.meditate.ui.theme.DeepBlue
 import com.shekoo.meditate.ui.theme.TextWhite
 
-enum class Destination(
+enum class NavRoutes(
     val route: String,
     val label: String,
     @DrawableRes val icon: Int,
@@ -45,8 +44,9 @@ enum class Destination(
 
 }
 
+@Destination<RootGraph>(start = true)
 @Composable
-fun NavigationScreen(navController: NavHostController) {
+fun NavigationScreen(navController: DestinationsNavigator) {
     var selectedIndex by remember {
         mutableStateOf(0)
     }
@@ -68,7 +68,7 @@ fun NavigationScreen(navController: NavHostController) {
             NavigationBar(
                 containerColor = DeepBlue,
                 windowInsets = NavigationBarDefaults.windowInsets) {
-                Destination.entries.forEachIndexed { index, destination ->
+                NavRoutes.entries.forEachIndexed { index, destination ->
                     NavigationBarItem(
                         selected = selectedIndex == index,
                         colors = navBarColors,

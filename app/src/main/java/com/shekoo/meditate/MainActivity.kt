@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.generated.NavGraphs
 import com.shekoo.meditate.ui.NavigationScreen
 import com.shekoo.meditate.ui.theme.MeditateTheme
 
@@ -14,7 +16,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MeditateTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    AppRouter()// 👈 Call your navigation here
+                    DestinationsNavHost(navGraph = NavGraphs.root) //👈 Call your navigation here
                   }
                 }
             }
