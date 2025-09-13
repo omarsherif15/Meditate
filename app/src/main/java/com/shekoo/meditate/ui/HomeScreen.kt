@@ -48,7 +48,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.shekoo.meditate.AppRouter
+import com.ramcosta.composedestinations.generated.destinations.DetailsScreenDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.shekoo.meditate.MeditateFeature
 import com.shekoo.meditate.R
 import com.shekoo.meditate.Routes
@@ -72,7 +73,7 @@ import com.shekoo.meditate.ui.theme.OrangeYellow3
 import com.shekoo.meditate.ui.theme.TextWhite
 
 @Composable
-fun HomeScreen(navController: NavHostController){
+fun HomeScreen(navController: DestinationsNavigator){
     val features = listOf(
         MeditateFeature(
             title = "Sleep Meditation",
@@ -191,7 +192,7 @@ fun ChipSection(
 }
 
 @Composable
-fun HomeBanner (navC: NavHostController){
+fun HomeBanner (navC: DestinationsNavigator){
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -234,7 +235,9 @@ fun HomeBanner (navC: NavHostController){
                     modifier = Modifier.size(16.dp)
                         .clickable(
                             onClick = {
-                                navC.navigate(Routes.DetailsScreen.route)
+                                navC.navigate(
+                                    DetailsScreenDestination()
+                                )
                             }
 
                         )

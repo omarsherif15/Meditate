@@ -42,6 +42,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.shekoo.meditate.MeditateFeature
 import com.shekoo.meditate.R
 import com.shekoo.meditate.ui.theme.Beige1
@@ -52,8 +55,11 @@ import com.shekoo.meditate.ui.theme.ButtonBlue
 import com.shekoo.meditate.ui.theme.DeepBlue
 import com.shekoo.meditate.ui.theme.TextWhite
 
+@Destination<RootGraph>
 @Composable
-fun DetailsScreen (navController: NavHostController){
+fun DetailsScreen (
+    navController: DestinationsNavigator
+){
     Scaffold(
         containerColor = DeepBlue,
         topBar = {
